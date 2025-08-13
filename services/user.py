@@ -27,3 +27,7 @@ def create_user(
         **extra_fields
     )
     return user
+
+
+def get_user(user_id: int) -> User:
+    return User.objects.get(id=user_id)
