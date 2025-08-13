@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db.models import QuerySet
 
-from db.models import User
+User = get_user_model()
 
 
 def create_user(
@@ -11,7 +11,6 @@ def create_user(
     last_name: str = None,
     first_name: str = None,
 ) -> User:
-    # User = get_user_model()
 
     extra_fields = {}
     if email:
@@ -41,7 +40,7 @@ def update_user(
     last_name: str = None,
     first_name: str = None,
 ) -> User:
-    user = User.objects.get(pk=user_id)
+    user = get_user(user_id)
 
     if username is not None:
         user.username = username
